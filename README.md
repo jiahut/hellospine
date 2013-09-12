@@ -1,13 +1,13 @@
-### Install
+### install
 
-        git clone http://github.com/jiahut/hellospine.git
+        git clone https://github.com/jiahut/hellospine.git
 
 ### server
 
-        npm install -g http://github.com/17up/hem.git
+        npm install -g https://github.com/17up/hem.git
 
-###  start 
+### start 
 
-        hem server 
+        hem server -d 
 
 enjoy!
