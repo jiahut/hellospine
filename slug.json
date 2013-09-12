@@ -1,0 +1,42 @@
+{
+  "server": {
+    "port"  : 9294
+  },
+
+  "routes": [
+    { ""        : "./public" },
+    { "/test"    : "./test/public" }
+  ],
+
+  "packages": {
+    "app": {
+      "paths"  : "./app",
+      "target" : "./public/app.js",
+      "afters": ["lib/setup.js"]
+    },
+    "init": {
+      "modules" : [
+        "es5-shimify",
+        "json2ify",
+        "jqueryify",
+        "spine",
+        "spine/lib/local",
+        "spine/lib/route",
+        "spine/lib/manager"
+      ],
+      "libs": ["lib/runtime.js"],
+      "target" : "./public/init.js",
+      "jsAfter": "jade.rethrow = function rethrow(err, filename, lineno){ throw err; } "
+    },
+    "css": {
+      "paths"  : "./css",
+      "target" : "./public/app.css"
+    },
+    "test": {
+      "identifier" : "specs",
+      "jsAfter"    : "require('lib/setup'); for (var key in specs.modules) specs(key);",
+      "paths"      : ["./test/specs"],
+      "target"     : "./test/public/specs.js"
+    }
+  }
+}
